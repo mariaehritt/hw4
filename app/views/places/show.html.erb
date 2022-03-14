@@ -3,13 +3,9 @@
 <h2>My Posts</h2>
 <% for post in @place.posts %>
   <div class="col-md-3 col-sm-6">
-    <h4>
-      <% if post.user %>
-        <%= post.user.first_name %>
-      <% else %>
-        anonymous
-      <% end %>
-    </h4>
+
+    <h4><%= post.title %></h4>
+    <h6><%= post.posted_on %></h6>
 
     <% if post.uploaded_image.attached? %>
       <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
@@ -17,9 +13,8 @@
       <img src="<%= post.image %>" class="img-fluid">
     <% end %>
 
-    <h3><%= post.title %></h3>
-    <h4><%= post.posted_on %></h4>
     <p><%= post.description %></p>
+
   </div>
 
 <% end %>
