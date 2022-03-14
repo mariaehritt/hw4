@@ -5,21 +5,23 @@
 </p>
 
 <% for post in @place.posts %>
-  <div class="col-md-3 col-sm-6">
+  # NEED TO FIX THIS CONDITIONAL LOGIC <% if @current_user.id == @post.user_id %>
+    <div class="col-md-3 col-sm-6">
 
-    <h4><%= post.title %></h4>
-    <h6><%= post.posted_on %></h6>
+      <h4><%= post.title %></h4>
+      <h6><%= post.posted_on %></h6>
 
-    <% if post.uploaded_image.attached? %>
-      <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-    <% else %>
-      <img src="<%= post.image %>" class="img-fluid">
-    <% end %>
+      <% if post.uploaded_image.attached? %>
+        <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+      <% else %>
+        <img src="<%= post.image %>" class="img-fluid">
+      <% end %>
 
-    <p><%= post.description %></p>
+      <p><%= post.description %></p>
 
-  </div>
-
+    </div>
+  <% else %>
+  <% end %>
 <% end %>
 
 <p>
