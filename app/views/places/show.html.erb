@@ -1,11 +1,11 @@
-<h1>My <%= @place.name %> Posts</h1>
+<h1><%= @place.name %> Posts</h1>
 
 <p>
-  <a href="/posts/new" class="btn btn-primary">New Post</a>
+  <a href="/posts/new?place_id=<%= @place.id %>" class="btn btn-primary">New Post</a>
 </p>
 
-<% for post in @place.posts %>
-  # NEED TO FIX THIS CONDITIONAL LOGIC <% if @current_user.id == @post.user_id %>
+<% if @current_user %>
+  <% for post in @place.posts %>
     <div class="col-md-3 col-sm-6">
 
       <h4><%= post.title %></h4>
@@ -20,14 +20,9 @@
       <p><%= post.description %></p>
 
     </div>
-  <% else %>
   <% end %>
 <% end %>
 
 <p>
-  <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
-</p>
-
-<p>
-  <a href="/places">Back to All Places</a>
+  <a href="/places" class="btn btn-primary">Back to All Places</a>
 </p>
